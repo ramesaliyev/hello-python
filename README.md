@@ -22,3 +22,4 @@ Add to path of course.
   - [udemy course](https://www.udemy.com/course/complete-python-bootcamp)
     - [notebooks](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)
     - [slides](https://drive.google.com/drive/folders/1cAM251bjoBCYF2bHfMM07MOGEgU2Q2VQ?usp=sharing)
+  - [pyformat.info](https://pyformat.info/)
