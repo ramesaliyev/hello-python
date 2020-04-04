@@ -23,3 +23,7 @@ Add to path of course.
     - [notebooks](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)
     - [slides](https://drive.google.com/drive/folders/1cAM251bjoBCYF2bHfMM07MOGEgU2Q2VQ?usp=sharing)
   - [pyformat.info](https://pyformat.info/)
+  - [realpython](https://realpython.com)
+
+## Useful Tutorials
+  - [lambda](https://realpython.com/python-lambda/)
