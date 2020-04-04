@@ -24,6 +24,7 @@ Add to path of course.
     - [slides](https://drive.google.com/drive/folders/1cAM251bjoBCYF2bHfMM07MOGEgU2Q2VQ?usp=sharing)
   - [pyformat.info](https://pyformat.info/)
   - [realpython](https://realpython.com)
+  - [pythonlikeyoumeanit](https://www.pythonlikeyoumeanit.com/)
 
 ## Useful Tutorials
   - [lambda](https://realpython.com/python-lambda/)
