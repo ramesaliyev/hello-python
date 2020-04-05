@@ -28,3 +28,4 @@ Add to path of course.
 
 ## Useful Tutorials
   - [lambda](https://realpython.com/python-lambda/)
+  - [decorators](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/)
