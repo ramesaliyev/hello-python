@@ -27,6 +27,13 @@ Add to path of course.
   - [pythonlikeyoumeanit](https://www.pythonlikeyoumeanit.com/)
 
 ## Useful Tutorials
-  - [lambda](https://realpython.com/python-lambda/)
-  - [decorators](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/)
-  - [meaning of underscores in python](https://dbader.org/blog/meaning-of-underscores-in-python)
+  - [ ] [lambda](https://realpython.com/python-lambda/)
+  - [x] [decorators](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/)
+  - [ ] [for loops](https://realpython.com/python-for-loop/)
+  - [ ] [while loops](https://realpython.com/python-while-loop/)
+  - [ ] [generators](https://realpython.com/introduction-to-python-generators/)
+  - [ ] [meaning of underscores in python](https://dbader.org/blog/meaning-of-underscores-in-python)
+  - [ ] [type checking](https://realpython.com/python-type-checking/#hello-types)
+
+# Courses
+  - [ ] [a curious course on coroutines and concurrency](#http://www.dabeaz.com/coroutines/)
