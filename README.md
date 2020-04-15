@@ -28,13 +28,16 @@ Add to path of course.
   - [practity/exercises](https://practity.com/343-2/)
 
 ## Useful Tutorials
-  - [ ] [lambda](https://realpython.com/python-lambda/)
+  - [ ] [pep 8](https://www.python.org/dev/peps/pep-0008/)
+  - [ ] [pep 8 outlines](https://realpython.com/python-pep8/)
+  - [x] [lambda](https://realpython.com/python-lambda/)
   - [x] [decorators](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/)
   - [ ] [for loops](https://realpython.com/python-for-loop/)
   - [ ] [while loops](https://realpython.com/python-while-loop/)
   - [x] [generators](https://realpython.com/introduction-to-python-generators/)
   - [ ] [meaning of underscores in python](https://dbader.org/blog/meaning-of-underscores-in-python)
   - [ ] [type checking](https://realpython.com/python-type-checking/#hello-types)
+  - [ ] [testing](https://realpython.com/python-testing/)
 
 # Courses
   - [ ] [a curious course on coroutines and concurrency](#http://www.dabeaz.com/coroutines/)
