@@ -25,6 +25,7 @@ Add to path of course.
   - [pyformat.info](https://pyformat.info/)
   - [realpython](https://realpython.com)
   - [pythonlikeyoumeanit](https://www.pythonlikeyoumeanit.com/)
+  - [practity/exercises](https://practity.com/343-2/)
 
 ## Useful Tutorials
   - [ ] [lambda](https://realpython.com/python-lambda/)
