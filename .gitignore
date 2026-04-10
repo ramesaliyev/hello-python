@@ -23,7 +23,7 @@ env/
 .pytest_cache/
 .coverage
 .coverage.*
-.coverage-report/
+coverage-report/
 htmlcov/
 
 # Type checking

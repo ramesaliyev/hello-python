@@ -65,4 +65,4 @@ jobs:
         if: always()   # upload even if tests failed, so you can see what was hit
         with:
           name: coverage-report-${{ matrix.python-version }}
-          path: .coverage-report/
+          path: coverage-report/

@@ -47,7 +47,7 @@ addopts    = [
     "--cov=topics",
     "--cov=src",
     "--cov-report=term-missing",
-    "--cov-report=html:.coverage-report",
+    "--cov-report=html:coverage-report",
 ]
 asyncio_mode = "auto"
 markers = [
