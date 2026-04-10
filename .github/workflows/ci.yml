@@ -1,0 +1,68 @@
+# CI pipeline — runs on every push to master and on every pull request targeting master.
+# All four quality gates (lint → format → typecheck → test) must pass for the job to succeed.
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      # fail-fast: false keeps all matrix jobs running even if one fails,
+      # so you see the full picture across Python versions at once.
+      fail-fast: false
+      matrix:
+        python-version: ["3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install uv (the package manager). Version is pinned for reproducibility;
+      # bump it intentionally rather than letting CI silently pick up new behavior.
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.6"
+          enable-cache: true   # caches the uv download between runs
+
+      # uv manages the Python installation itself — no separate setup-python needed.
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      # Install all dependencies from uv.lock into .venv (fully reproducible).
+      - name: Install dependencies
+        run: uv sync
+
+      # Quality gate 1: ruff linter — checks for style and logic issues.
+      - name: Ruff lint
+        run: uv run lint
+
+      # Quality gate 2: ruff formatter — ensures code matches the canonical format.
+      # (Does not modify files; exits non-zero if anything would change.)
+      - name: Ruff format check
+        run: uv run fmt-check
+
+      # Quality gate 3: mypy — static type checking.
+      # topics/type_hints/* is checked in strict mode; other modules are lenient.
+      - name: mypy
+        run: uv run typecheck
+
+      # Quality gate 4: pytest — runs all tests with coverage.
+      # Includes doctests from topic modules and tests in topics/*/tests/.
+      - name: Tests
+        run: uv run test
+
+      # Upload the HTML coverage report as a build artifact so you can download
+      # and inspect it from the GitHub Actions run summary.
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()   # upload even if tests failed, so you can see what was hit
+        with:
+          name: coverage-report-${{ matrix.python-version }}
+          path: .coverage-report/

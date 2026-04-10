@@ -1,43 +1,10 @@
-required python version `>=3.8.1`
+# hello-python
 
-# Installation
-## Python
-##### Install
-    brew install python@3.8
-Add to path of course.
-##### Use
-    python3.8 --version
-    pip3.8 --version
+A structured Python learning repository — basics to advanced.
 
-## JupyterLab
-##### Install
-    pip3.8 install jupyterlab
-##### Run Notebook
-    jupyter notebook
-##### Run Lab
-    jupyter lab
+[![CI](https://github.com/ramesaliyev/hello-python/actions/workflows/ci.yml/badge.svg)](https://github.com/ramesaliyev/hello-python/actions/workflows/ci.yml)
 
-## Resources
-  - [official documentation](https://docs.python.org/3/tutorial)
-  - [udemy course](https://www.udemy.com/course/complete-python-bootcamp)
-    - [notebooks](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)
-    - [slides](https://drive.google.com/drive/folders/1cAM251bjoBCYF2bHfMM07MOGEgU2Q2VQ?usp=sharing)
-  - [pyformat.info](https://pyformat.info/)
-  - [realpython](https://realpython.com)
-  - [pythonlikeyoumeanit](https://www.pythonlikeyoumeanit.com/)
-  - [practity/exercises](https://practity.com/343-2/)
+---
 
-## Useful Tutorials
-  - [ ] [pep 8](https://www.python.org/dev/peps/pep-0008/)
-  - [ ] [pep 8 outlines](https://realpython.com/python-pep8/)
-  - [x] [lambda](https://realpython.com/python-lambda/)
-  - [x] [decorators](https://www.thecodeship.com/patterns/guide-to-python-function-decorators/)
-  - [ ] [for loops](https://realpython.com/python-for-loop/)
-  - [ ] [while loops](https://realpython.com/python-while-loop/)
-  - [x] [generators](https://realpython.com/introduction-to-python-generators/)
-  - [ ] [meaning of underscores in python](https://dbader.org/blog/meaning-of-underscores-in-python)
-  - [ ] [type checking](https://realpython.com/python-type-checking/#hello-types)
-  - [ ] [testing](https://realpython.com/python-testing/)
-
-# Courses
-  - [ ] [a curious course on coroutines and concurrency](#http://www.dabeaz.com/coroutines/)
+- [Topics](TOPICS.md)
+- [Developer guide](DEV.md)

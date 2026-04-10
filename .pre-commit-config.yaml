@@ -1,0 +1,43 @@
+repos:
+  # ---------------------------------------------------------------------------
+  # General file hygiene: whitespace, EOF newlines, syntax checks, size limits.
+  # These hooks are fast, language-agnostic, and catch common slip-ups before
+  # they pollute the diff history.
+  # ---------------------------------------------------------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace       # strips trailing spaces on every line
+      - id: end-of-file-fixer         # ensures files end with a single newline
+      - id: check-yaml                # validates YAML syntax
+      - id: check-toml                # validates TOML syntax (pyproject.toml etc.)
+      - id: check-json                # validates JSON syntax
+        exclude: ^\.vscode/           # VS Code settings are JSONC (comments allowed)
+      - id: check-merge-conflict      # blocks committing unresolved merge markers
+      - id: debug-statements          # catches leftover breakpoint()/pdb calls
+      - id: check-added-large-files   # blocks files > 500 KB (e.g. accidental data dumps)
+        args: ["--maxkb=500"]
+
+  # ---------------------------------------------------------------------------
+  # Ruff: linting and formatting (replaces flake8, isort, black).
+  # `--fix` auto-corrects safe violations so the commit stays clean.
+  # Version must stay in sync with ruff in pyproject.toml dependencies.
+  # ---------------------------------------------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.10
+    hooks:
+      - id: ruff          # lint — auto-fixes safe violations
+        args: [--fix]
+      - id: ruff-format   # format — enforces consistent style (replaces black)
+
+  # ---------------------------------------------------------------------------
+  # mypy: static type checking on every commit.
+  # Uses pyproject.toml for configuration (target version, per-module overrides).
+  # Only type_hints/* is currently set to strict; other modules are lenient.
+  # ---------------------------------------------------------------------------
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.20.0
+    hooks:
+      - id: mypy
+        args: [--config-file=pyproject.toml]
+        additional_dependencies: [pytest]

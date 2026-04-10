@@ -1,3 +1,32 @@
 {
-  "python.pythonPath": "/usr/local/opt/python@3.8/bin/python3"
+  // Point VS Code at the uv-managed virtual environment.
+  // uv creates .venv automatically on `uv sync`.
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+
+  "[python]": {
+    // Requires the official "Ruff" extension from Astral Software (astral.sh)
+    // (identifier: charliermarsh.ruff) from the VS Code marketplace.
+    // Ruff acts as both linter and formatter, replacing black + flake8 + isort.
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      // Apply all auto-fixable lint violations on save (same as `uv run lint-fix`).
+      "source.fixAll.ruff": "explicit",
+      // Sort imports on save (replaces isort; configured via [tool.ruff.lint.isort]).
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+
+  // Let Ruff pick up configuration from pyproject.toml (tool.ruff section).
+  "ruff.enable": true,
+  "ruff.configurationPreference": "filesystemFirst",
+
+  // Visual ruler at column 88 — matches ruff `line-length = 88` in pyproject.toml.
+  "editor.rulers": [88],
+
+  // Mirror what the pre-commit trailing-whitespace and end-of-file-fixer hooks do,
+  // so the editor fixes these before the hook even runs.
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
 }

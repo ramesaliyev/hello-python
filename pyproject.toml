@@ -1,0 +1,151 @@
+[project]
+name = "hello-python"
+version = "0.1.0"
+description = "A structured Python learning repository — basics to advanced"
+requires-python = ">=3.14"
+readme = "README.md"
+dependencies = [
+    "pytest==9.0.3",
+    "pytest-cov==7.1.0",
+    "pytest-asyncio==1.3.0",
+    "mypy==1.20.0",
+    "ruff==0.15.10",
+    "pre-commit==4.5.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pylearn"]
+
+# ---------------------------------------------------------------------------
+# Project scripts — installed as executables; run via: uv run <script>
+# ---------------------------------------------------------------------------
+[project.scripts]
+install-hooks = "pylearn._scripts:install_hooks"
+test          = "pylearn._scripts:test"
+test-fast     = "pylearn._scripts:test_fast"
+lint          = "pylearn._scripts:lint"
+lint-fix      = "pylearn._scripts:lint_fix"
+fmt           = "pylearn._scripts:fmt"
+fmt-check     = "pylearn._scripts:fmt_check"
+typecheck     = "pylearn._scripts:typecheck"
+check         = "pylearn._scripts:check"
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+testpaths  = ["topics", "tests"]
+addopts    = [
+    "--tb=short",
+    "--strict-markers",
+    "--doctest-modules",
+    "--cov=topics",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html:.coverage-report",
+]
+asyncio_mode = "auto"
+markers = [
+    "slow: marks tests as slow (deselect with -m 'not slow')",
+    "integration: marks integration tests",
+]
+
+# ---------------------------------------------------------------------------
+# coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+source = ["topics", "src"]
+omit   = ["*/tests/*", "*/conftest.py", "*/pylearn/_scripts.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.$$",
+]
+
+# ---------------------------------------------------------------------------
+# ruff
+# ---------------------------------------------------------------------------
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+src = ["src", "topics"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # Conflicts with the formatter
+    "COM812",
+    "ISC001",
+
+    # Docstring conventions — too strict for a learning repo
+    "D",
+
+    # Allow print() — essential for learning basics
+    "T201",
+    "T203",
+
+    # Allow commented-out code — tutorials use it for examples
+    "ERA001",
+
+    # Allow TODO comments without author/issue links
+    "FIX002",
+    "TD002",
+    "TD003",
+    "TD004",
+
+    # Type-checking import rules — too aggressive for a learning repo
+    # (moving stdlib imports into TYPE_CHECKING blocks is fragile in Python 3.14)
+    "TC",
+
+    # Allow f-strings in logging for learning purposes
+    "G004",
+
+    # subprocess with trusted internal input is fine in _scripts.py
+    "S603",
+    "S607",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/test_*.py" = [
+    "S101",   # use of assert — expected in tests
+    "ANN",    # type annotations not required in test functions
+    "PLR2004", # magic value comparison — parametrize values are fine
+]
+"**/conftest.py" = ["ANN"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pylearn"]
+force-sort-within-sections = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+# ---------------------------------------------------------------------------
+# mypy
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version  = "3.14"
+mypy_path       = "src"
+warn_return_any = true
+warn_unused_configs  = true
+warn_unused_ignores  = true
+# Tighten per-module as you learn more typing.
+# Add `disallow_untyped_defs = true` to a module's override to go stricter.
+
+[[tool.mypy.overrides]]
+module = ["topics.type_hints.*"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["topics.*.tests.*"]
+disallow_untyped_defs = false

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+
+# Virtual environments (uv manages .venv)
+.venv/
+venv/
+env/
+
+# uv — lock file IS committed (reproducibility)
+# Do NOT add uv.lock here
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+.coverage-report/
+htmlcov/
+
+# Type checking
+.mypy_cache/
+.pyright/
+
+# Linting
+.ruff_cache/
+
+# IDE
+.vscode/
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+secrets.py
