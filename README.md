@@ -6,5 +6,5 @@ A structured Python learning repository — basics to advanced.
 
 ---
 
-- [Topics](TOPICS.md)
+- [Topics](topics/README.md)
 - [Developer guide](DEV.md)
