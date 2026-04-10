@@ -46,6 +46,7 @@ addopts    = [
     "--doctest-modules",
     "--cov=topics",
     "--cov=src",
+    "--cov=tests/utils",
     "--cov-report=term-missing",
     "--cov-report=html:coverage-report",
 ]
@@ -59,8 +60,8 @@ markers = [
 # coverage
 # ---------------------------------------------------------------------------
 [tool.coverage.run]
-source = ["topics", "src"]
-omit   = ["*/tests/*", "*/conftest.py", "*/pylearn/_scripts.py"]
+source = ["topics", "src", "tests"]
+omit   = ["*/test_*.py", "*/conftest.py", "*/pylearn/_scripts.py", "*/__init__.py"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -114,10 +115,11 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"**/tests/test_*.py" = [
+"**/test_*.py" = [
     "S101",   # use of assert — expected in tests
     "ANN",    # type annotations not required in test functions
     "PLR2004", # magic value comparison — parametrize values are fine
+    "PT011",  # exception message matching too strict for type-focused tests
 ]
 "**/conftest.py" = ["ANN"]
 

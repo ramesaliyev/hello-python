@@ -5,7 +5,7 @@ from io import StringIO
 
 import pytest
 
-from pylearn.utils.helpers import capture_stdout as _capture_stdout
+from tests.utils.capture import capture_stdout as _capture_stdout
 
 
 @pytest.fixture

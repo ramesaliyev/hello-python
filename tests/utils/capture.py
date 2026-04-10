@@ -1,4 +1,4 @@
-"""General-purpose helpers used across tutorial files and tests."""
+"""Stdout-capture utilities for tests."""
 
 from collections.abc import Generator
 from contextlib import contextmanager
