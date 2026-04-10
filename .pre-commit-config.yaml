@@ -5,7 +5,7 @@ repos:
   # they pollute the diff history.
   # ---------------------------------------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace       # strips trailing spaces on every line
       - id: end-of-file-fixer         # ensures files end with a single newline
