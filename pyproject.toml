@@ -38,18 +38,22 @@ check         = "pylearn._scripts:check"
 # pytest
 # ---------------------------------------------------------------------------
 [tool.pytest.ini_options]
+# "." lets pytest import modules at repo root; "src" exposes the pylearn package.
 pythonpath = [".", "src"]
+# Limit discovery to content dirs — avoids accidentally picking up venv or build artefacts.
 testpaths  = ["topics", "tests"]
 addopts    = [
-    "--tb=short",
-    "--strict-markers",
-    "--doctest-modules",
-    "--cov=topics",
-    "--cov=src",
-    "--cov=tests/utils",
-    "--cov-report=term-missing",
-    "--cov-report=html:coverage-report",
+    "--tb=short",          # compact tracebacks — enough detail without drowning the terminal
+    "--strict-markers",    # fail immediately if a test uses an unregistered marker (typo guard)
+    "--doctest-modules",   # run >>> examples inside .py docstrings as tests
+    "--cov=topics",        # measure coverage for learning topic modules
+    "--cov=src",           # measure coverage for shared utilities
+    "--cov=tests/utils",   # measure coverage for test helper utilities
+    "--cov-report=term-missing",          # show uncovered line numbers in the terminal summary
+    "--cov-report=html:coverage-report",  # generate a browsable HTML report in coverage-report/
 ]
+# pytest-asyncio: automatically treat async test functions as asyncio coroutines —
+# no need to decorate every async test with @pytest.mark.asyncio.
 asyncio_mode = "auto"
 markers = [
     "slow: marks tests as slow (deselect with -m 'not slow')",
@@ -60,27 +64,33 @@ markers = [
 # coverage
 # ---------------------------------------------------------------------------
 [tool.coverage.run]
+# Measure all three source trees so the HTML report reflects the full picture.
 source = ["topics", "src", "tests"]
-omit   = ["*/test_*.py", "*/conftest.py", "*/pylearn/_scripts.py", "*/__init__.py"]
+omit   = [
+    "*/test_*.py",              # test files themselves aren't "production" code to cover
+    "*/conftest.py",            # pytest fixtures — not independently executable
+    "*/pylearn/_scripts.py",    # dev CLI entry points; tested indirectly via uv run commands
+    "*/__init__.py",            # package markers with no logic to measure
+]
 
 [tool.coverage.report]
 exclude_lines = [
-    "pragma: no cover",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-    "\\.\\.\\.$$",
+    "pragma: no cover",            # manual opt-out for unreachable/untestable branches
+    "if __name__ == .__main__.:",  # script guard — only runs when executed directly
+    "if TYPE_CHECKING:",           # imports used only for type annotations, stripped at runtime
+    "\\.\\.\\.$$",                 # bare ellipsis — abstract method stubs with no body
 ]
 
 # ---------------------------------------------------------------------------
 # ruff
 # ---------------------------------------------------------------------------
 [tool.ruff]
-target-version = "py314"
-line-length = 88
-src = ["src", "topics"]
+target-version = "py314"  # enables checks for Python 3.14-specific syntax and builtins
+line-length = 88           # matches black's default; keeps lines readable without being too narrow
+src = ["src", "topics"]    # tells ruff which directories are first-party for import sorting
 
 [tool.ruff.lint]
-select = ["ALL"]
+select = ["ALL"]  # opt-in to every rule; unused ones are explicitly ignored below
 ignore = [
     # Conflicts with the formatter
     "COM812",
@@ -124,30 +134,35 @@ ignore = [
 "**/conftest.py" = ["ANN"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["pylearn"]
-force-sort-within-sections = true
+known-first-party = ["pylearn"]          # treat pylearn as a first-party import for grouping
+force-sort-within-sections = true        # sort all imports alphabetically within each group
 
 [tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
-docstring-code-format = true
+quote-style = "double"           # consistent with most Python style guides and black
+indent-style = "space"           # spaces over tabs — Python community standard
+docstring-code-format = true     # also format code blocks inside docstrings
 
 # ---------------------------------------------------------------------------
 # mypy
 # ---------------------------------------------------------------------------
 [tool.mypy]
 python_version  = "3.14"
-mypy_path       = "src"
-warn_return_any = true
-warn_unused_configs  = true
-warn_unused_ignores  = true
-# Tighten per-module as you learn more typing.
+mypy_path       = "src"   # lets mypy resolve `pylearn.*` imports without install
+warn_return_any      = true  # flag implicit `Any` leaking out of return types
+warn_unused_configs  = true  # catch stale per-module override sections
+warn_unused_ignores  = true  # catch # type: ignore comments that are no longer needed
+# Global defaults are intentionally lenient — most topics focus on concepts other
+# than type annotations. Tighten per-module via overrides as topics mature.
 # Add `disallow_untyped_defs = true` to a module's override to go stricter.
 
 [[tool.mypy.overrides]]
+# topics/type_hints/ is the dedicated learning topic for Python type annotations —
+# strict mode here ensures the examples themselves are fully and correctly typed.
 module = ["topics.type_hints.*"]
 strict = true
 
 [[tool.mypy.overrides]]
+# Test functions in other topics intentionally omit annotations to stay concise
+# and keep the focus on the concept under test, not on type syntax.
 module = ["topics.*.tests.*"]
 disallow_untyped_defs = false

@@ -192,13 +192,32 @@ All tool configuration lives in `pyproject.toml`. Key sections:
 
 ---
 
+## Type checking in detail
+
+mypy runs in **strict mode only for `topics/type_hints/*`**. All other modules use lenient settings (no strict flags).
+
+This is intentional: `topics/type_hints/` is the dedicated learning topic for Python type annotations. Enforcing strict mode across the whole repo would produce noisy errors in unrelated learning examples that aren't focused on types.
+
+The configuration lives in `pyproject.toml` under `[tool.mypy]` as per-module overrides:
+
+```toml
+[tool.mypy]
+# lenient defaults ...
+
+[[tool.mypy.overrides]]
+module = "topics.type_hints.*"
+strict = true
+```
+
+---
+
 ## How to add a new topic
 
 1. Create a directory under `topics/`:
    ```
-   topics/your_topic/
+   topics/<category>/your_topic/
    ├── __init__.py          # empty or a short module docstring
-   ├── examples.py          # demo code with docstrings/doctests
+   ├── README.md            # link to test files and external resources
    └── tests/
        ├── __init__.py
        └── test_examples.py
@@ -208,6 +227,12 @@ All tool configuration lives in `pyproject.toml`. Key sections:
 
 3. pytest discovers tests automatically — no registration needed.
 
-4. Run `uv run test-fast` to verify your new tests pass before committing.
+4. **Maintain the README chain.** Every level from the root down must link to the new content:
+   ```
+   README.md → topics/README.md → topics/<category>/README.md → topics/<category>/your_topic/README.md
+   ```
+   Trace upward and add any missing entries or links at each level.
 
-5. Commit — pre-commit hooks will lint, format, and type-check your new files automatically.
+5. Run `uv run test-fast` to verify your new tests pass before committing.
+
+6. Commit — pre-commit hooks will lint, format, and type-check your new files automatically.
