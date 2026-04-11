@@ -105,6 +105,16 @@ Tool: **Ruff** (lint + format).
 - Pre-commit hooks run lint, format, and type-check automatically on every commit.
 - Always use the latest Python conventions and modern language features appropriate for Python 3.14.
 
+### Suppression comments (`# noqa` / `# type: ignore`)
+
+- Use them **only** when the rule genuinely does not apply in context, or when the code intentionally violates best practice for a teaching reason.
+- If unsure whether a suppression is warranted, **ask** rather than silently adding one.
+- **Always include an inline reason** on the same line, separated by `—`:
+  ```python
+  {[1], 1}  # noqa: B018 — set literal is intentional to trigger TypeError
+  ```
+- Never suppress a rule just to make a warning go away; prefer fixing the code instead.
+
 ---
 
 ## Type Checking (mypy)
