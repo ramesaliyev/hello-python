@@ -1,4 +1,4 @@
-# Data Structures
+# Control Flow
 
 ## Examples
 - [match case](tests/test_match_case.py)

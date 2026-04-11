@@ -8,4 +8,4 @@
 - [control_flow](fundamentals/control_flow/README.md) — Conditionals, loops, comprehensions
 - [functions](fundamentals/functions/README.md) — Parameters, scope, closures, lambdas, higher-order functions, functools
 - [data_structures](fundamentals/data_structures/README.md) — Lists, dicts, sets, tuples, named tuples, dataclasses
-- error_handling — Exceptions, context managers, custom errors
+- [context_managers](fundamentals/context_managers/README.md) — with statement, __enter__/__exit__ protocol, @contextmanager
