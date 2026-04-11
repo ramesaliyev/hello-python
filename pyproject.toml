@@ -18,27 +18,27 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pylearn"]
+packages = ["src/dev"]
 
 # ---------------------------------------------------------------------------
 # Project scripts — installed as executables; run via: uv run <script>
 # ---------------------------------------------------------------------------
 [project.scripts]
-install-hooks = "pylearn._scripts:install_hooks"
-test          = "pylearn._scripts:test"
-test-fast     = "pylearn._scripts:test_fast"
-lint          = "pylearn._scripts:lint"
-lint-fix      = "pylearn._scripts:lint_fix"
-fmt           = "pylearn._scripts:fmt"
-fmt-check     = "pylearn._scripts:fmt_check"
-typecheck     = "pylearn._scripts:typecheck"
-check         = "pylearn._scripts:check"
+install-hooks = "dev._scripts:install_hooks"
+test          = "dev._scripts:test"
+test-fast     = "dev._scripts:test_fast"
+lint          = "dev._scripts:lint"
+lint-fix      = "dev._scripts:lint_fix"
+fmt           = "dev._scripts:fmt"
+fmt-check     = "dev._scripts:fmt_check"
+typecheck     = "dev._scripts:typecheck"
+check         = "dev._scripts:check"
 
 # ---------------------------------------------------------------------------
 # pytest
 # ---------------------------------------------------------------------------
 [tool.pytest.ini_options]
-# "." lets pytest import modules at repo root; "src" exposes the pylearn package.
+# "." lets pytest import modules at repo root; "src" exposes the dev package.
 pythonpath = [".", "src"]
 # Limit discovery to content dirs — avoids accidentally picking up venv or build artefacts.
 testpaths  = ["topics", "tests"]
@@ -69,7 +69,7 @@ source = ["topics", "src", "tests"]
 omit   = [
     "*/test_*.py",              # test files themselves aren't "production" code to cover
     "*/conftest.py",            # pytest fixtures — not independently executable
-    "*/pylearn/_scripts.py",    # dev CLI entry points; tested indirectly via uv run commands
+    "*/dev/_scripts.py",        # dev CLI entry points; tested indirectly via uv run commands
     "*/__init__.py",            # package markers with no logic to measure
 ]
 
@@ -126,15 +126,23 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "**/test_*.py" = [
-    "S101",   # use of assert — expected in tests
-    "ANN",    # type annotations not required in test functions
+    "S101",    # use of assert — expected in tests
+    "ANN",     # type annotations not required in test functions
     "PLR2004", # magic value comparison — parametrize values are fine
-    "PT011",  # exception message matching too strict for type-focused tests
+    "PT011",   # exception message matching too strict for type-focused tests
+    "EM101",   # string literal in raise — tests frequently raise with inline messages for brevity
+    "EM102",   # f-string literal in raise — same reason as EM101
+    "TRY003",  # long exception messages outside class — fine in tests, no i18n requirement
+    "TRY301",  # abstract raise to inner function — tests deliberately raise inline to show behaviour
+    "PT012",   # pytest.raises() body must be simple — learning tests sometimes need try/except inside
+    "PYI034",  # __enter__ return type — test helper classes don't need Self for correctness
+    "BLE001",  # blind Exception catch — some tests intentionally demonstrate this antipattern
+    "S110",    # try/except/pass — some tests intentionally demonstrate this antipattern
 ]
 "**/conftest.py" = ["ANN"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["pylearn"]          # treat pylearn as a first-party import for grouping
+known-first-party = ["dev"]              # treat dev as a first-party import for grouping
 force-sort-within-sections = true        # sort all imports alphabetically within each group
 
 [tool.ruff.format]
@@ -147,7 +155,7 @@ docstring-code-format = true     # also format code blocks inside docstrings
 # ---------------------------------------------------------------------------
 [tool.mypy]
 python_version  = "3.14"
-mypy_path       = "src"   # lets mypy resolve `pylearn.*` imports without install
+mypy_path       = "src"   # lets mypy resolve `dev.*` imports without install
 warn_return_any      = true  # flag implicit `Any` leaking out of return types
 warn_unused_configs  = true  # catch stale per-module override sections
 warn_unused_ignores  = true  # catch # type: ignore comments that are no longer needed

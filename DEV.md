@@ -53,7 +53,7 @@ All commands use `uv run <script>`, which activates the virtual environment tran
 | `uv run check` | Run lint → fmt-check → typecheck → test in sequence. Stops on first failure. |
 | `uv run install-hooks` | Install pre-commit hooks (only needed once after cloning). |
 
-These scripts are defined in `src/pylearn/_scripts.py` and registered under `[project.scripts]` in `pyproject.toml`.
+These scripts are defined in `src/dev/_scripts.py` and registered under `[project.scripts]` in `pyproject.toml`.
 
 ---
 
@@ -141,7 +141,7 @@ All four quality gates must pass. Coverage report is uploaded even when tests fa
 ```
 hello-python/
 ├── src/
-│   └── pylearn/
+│   └── dev/
 │       ├── __init__.py         # package marker
 │       ├── _scripts.py         # dev scripts (uv run <command> entry points)
 │       └── utils/

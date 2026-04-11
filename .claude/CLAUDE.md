@@ -26,7 +26,7 @@ uv run typecheck     # mypy
 uv run check         # lint → fmt-check → typecheck → test
 ```
 
-Scripts are defined in `src/pylearn/_scripts.py` and registered under `[project.scripts]` in `pyproject.toml`.
+Scripts are defined in `src/dev/_scripts.py` and registered under `[project.scripts]` in `pyproject.toml`.
 
 When adding a dependency, always web-search for its latest version and read the current documentation before using it.
 
@@ -36,7 +36,7 @@ When adding a dependency, always web-search for its latest version and read the 
 
 ```
 topics/       # learning content — all pytest discovery happens here
-src/pylearn/  # shared utilities (keep lean)
+src/dev/      # dev scripts and shared utilities (keep lean)
 tests/        # cross-topic fixtures and utility tests
 ```
 
