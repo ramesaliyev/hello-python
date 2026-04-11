@@ -5,7 +5,7 @@
 
 ## Fundamentals
 - [basics](fundamentals/basics/README.md) — Variables, types, operators, builtins
-- [control_flow](fundamentals/control_flow/README.md) — Conditionals, loops, comprehensions
+- [control flow](fundamentals/control_flow/README.md) — Conditionals, loops, comprehensions
 - [functions](fundamentals/functions/README.md) — Parameters, scope, closures, lambdas, higher-order functions, functools
-- [data_structures](fundamentals/data_structures/README.md) — Lists, dicts, sets, tuples, named tuples, dataclasses
-- [context_managers](fundamentals/context_managers/README.md) — with statement, __enter__/__exit__ protocol, @contextmanager
+- [data structures](fundamentals/data_structures/README.md) — Lists, dicts, sets, tuples, named tuples, dataclasses
+- [context managers](fundamentals/context_managers/README.md) — with statement, __enter__/__exit__ protocol, @contextmanager
