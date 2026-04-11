@@ -6,6 +6,6 @@
 ## Fundamentals
 - [basics](fundamentals/basics/README.md) — Variables, types, operators, builtins
 - [control_flow](fundamentals/control_flow/README.md) — Conditionals, loops, comprehensions
-- functions — Arguments, closures, lambdas, higher-order functions
+- [functions](fundamentals/functions/README.md) — Parameters, scope, closures, lambdas, higher-order functions, functools
 - [data_structures](fundamentals/data_structures/README.md) — Lists, dicts, sets, tuples, named tuples, dataclasses
 - error_handling — Exceptions, context managers, custom errors
