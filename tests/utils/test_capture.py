@@ -20,6 +20,6 @@ def test_capture_stdout_restores_stdout() -> None:
 
 def test_capture_stdout_restores_stdout_on_exception() -> None:
     original = sys.stdout
-    with pytest.raises(ValueError, match=""), capture_stdout():
+    with pytest.raises(ValueError), capture_stdout():
         raise ValueError
     assert sys.stdout is original
