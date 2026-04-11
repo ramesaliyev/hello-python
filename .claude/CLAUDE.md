@@ -64,6 +64,19 @@ README.md → topics/README.md → topics/<category>/README.md → topics/<categ
 Trace upward from the new file and add any missing links or entries at each level.
 Topic READMEs must link to their test files and to relevant external resources.
 
+### Test file link format
+
+Link to test files using this exact format:
+
+```markdown
+- [subtopic name](tests/test_file.py) — optional description
+```
+
+- The **label** must be a human-readable subtopic name: lowercase words separated by spaces, no `test_` prefix, no underscores.
+  - Correct: `[match case](tests/test_match_case.py)`
+  - Wrong: `[test_match_case](tests/test_match_case.py)` or `` `tests/test_match_case.py` ``
+- The **path** is relative from the topic README to the test file (always `tests/test_*.py`).
+
 ---
 
 ## Test Conventions
