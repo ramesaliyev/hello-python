@@ -42,41 +42,9 @@ tests/        # cross-topic fixtures and utility tests
 
 ---
 
-## Adding New Topics — README Chain is Mandatory
+## Adding New Topics
 
-Standard layout:
-
-```
-topics/<category>/<topic>/
-├── __init__.py
-├── README.md          ← required; link to test files and external resources
-└── tests/
-    ├── __init__.py
-    └── test_<topic>.py
-```
-
-**Every time content is added, maintain the full README chain:**
-
-```
-README.md → topics/README.md → topics/<category>/README.md → topics/<category>/<topic>/README.md
-```
-
-Trace upward from the new file and add any missing links or entries at each level.
-Topic READMEs must link to their test files and to relevant external resources.
-
-### Link label format
-
-This rule applies to **all** links in README files — links to test files, to topic READMEs, and to any other file.
-
-```markdown
-- [subtopic name](tests/test_file.py) — optional description
-- [control flow](fundamentals/control_flow/README.md) — optional description
-```
-
-- The **label** must be human-readable: lowercase words separated by spaces, no underscores, no `test_` prefix.
-  - Correct: `[control flow](...)`, `[match case](...)`
-  - Wrong: `[control_flow](...)`, `[test_match_case](...)`, `` `tests/test_match_case.py` ``
-- The **path** is relative from the README containing the link.
+Use the `/update-topic` skill — it contains the full procedure: directory layout, README chain rules, and link label format.
 
 ---
 
@@ -87,15 +55,10 @@ This rule applies to **all** links in README files — links to test files, to t
 - Async tests work without decoration (`asyncio_mode = "auto"`).
 - Available markers: `slow`, `integration`.
 
-### Comments in learning tests
+### Comments in tests
 
 Add inline comments when the test covers behaviour the function name alone does not convey.
 If the name is fully self-explanatory (e.g., `test_set_is_unordered`), comments are not required.
-
-### Content of learning tests
-
-- Always include tricky edge cases and important "must-know" behaviours — not just the happy path.
-- If asked to add "everything" or make tests "comprehensive", do a web search first to find current best practices and surprising gotchas for that topic.
 
 ---
 
