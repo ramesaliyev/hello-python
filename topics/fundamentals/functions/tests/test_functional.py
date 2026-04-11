@@ -145,12 +145,17 @@ def test_methodcaller_calls_named_method() -> None:
     upper = operator.methodcaller("upper")
     assert upper("hello") == "HELLO"
 
-    words = ["BANANA", "APPLE", "CHERRY"]
+    # sorted() uses the key only for comparison — original values are preserved
+    # .lower() key enables case-insensitive ordering without mutating the strings
+    words = ["banana", "APPLE", "Cherry"]
     assert sorted(words, key=operator.methodcaller("lower")) == [
-        "apple",
+        "APPLE",
         "banana",
-        "cherry",
+        "Cherry",
     ]
+
+    # without .lower(), uppercase letters sort before lowercase in ASCII
+    assert sorted(words) == ["APPLE", "Cherry", "banana"]
 
 
 def test_methodcaller_with_arguments() -> None:
