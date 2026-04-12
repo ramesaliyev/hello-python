@@ -1,6 +1,9 @@
 # Basics
 
 ## Examples
+- [types](tests/test_types.py)
+- [operators](tests/test_operators.py)
+- [builtins](tests/test_builtins.py)
 - [iterables](tests/test_iterables.py)
 
 ## Resources
