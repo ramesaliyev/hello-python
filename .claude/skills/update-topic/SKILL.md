@@ -8,6 +8,16 @@ description: Apply whenever working inside the topics/ folder — adding a new t
 - Always include tricky edge cases and important "must-know" behaviours — not just the happy path.
 - If asked to add "everything" or make tests "comprehensive", do a web search first to find current best practices and surprising gotchas for that topic.
 
+### Beyond mechanics — teach the full picture
+
+Tests **must** cover mechanics thoroughly. They should *also* cover:
+
+- **Why it's useful** — what problem this feature solves, and when to reach for it over alternatives. A test named `test_generator_is_more_memory_efficient_than_list` adds value on top of `test_generator_basic`.
+- **Practical usage patterns** — idioms and real-world scenarios. Show the feature doing something meaningful alongside the toy examples that explain the mechanics.
+- **What to avoid / antipatterns** — common mistakes, surprising gotchas, and subtle behaviour that burns people in practice. These are often the most valuable tests in a topic.
+
+Group these naturally within the relevant section, or add a dedicated "Pitfalls" section at the end of the file for mistakes that span multiple mechanics.
+
 ## Standard Layout
 
 Every new topic must follow this structure:
