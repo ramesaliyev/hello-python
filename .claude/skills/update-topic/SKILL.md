@@ -46,6 +46,44 @@ This rule applies to **all** links in README files — links to test files, to t
   - Wrong: `[control_flow](...)`, `[test_match_case](...)`, `` `tests/test_match_case.py` ``
 - The **path** is relative from the README containing the link.
 
+## README Resources — Mandatory
+
+Every topic README with actual content **must** have a `## Resources` section.
+
+### What to include
+
+- **Python official docs** for every concept covered — link to the most specific page (e.g. `docs.python.org/3/library/contextlib.html` rather than just the top-level docs).
+- **PEPs** for any language feature that was introduced or significantly changed by a PEP.
+- **Real Python articles** (`realpython.com`) when a thorough, well-regarded article exists for the topic.
+- Other quality articles only if they add genuine value beyond the above.
+
+### Where to find them
+
+- Python official docs: `https://docs.python.org/3/` — use the tutorial, library reference, or language reference as appropriate.
+- PEPs: `https://peps.python.org/pep-XXXX/`
+- Real Python: `https://realpython.com/` — do a web search to confirm the article exists and covers the right topic.
+
+### Ordering
+
+List resources in this order:
+1. Python Docs links (most specific first)
+2. PEP links (chronological)
+3. Real Python articles
+4. Other articles / general references (e.g. Learn X in Y Minutes)
+
+### Example
+
+```markdown
+## Resources
+
+- [Python Docs — contextlib](https://docs.python.org/3/library/contextlib.html)
+- [Python Docs — Async Context Managers](https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers)
+- [PEP 343 — The with Statement](https://peps.python.org/pep-0343/)
+- [Real Python — Context Managers and the `with` Statement](https://realpython.com/python-with-statement/)
+```
+
+---
+
 ## Writing Test Files
 
 ### Teaching tests and lint

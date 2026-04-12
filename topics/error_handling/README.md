@@ -15,3 +15,5 @@
 - [PEP 654 — Exception Groups and except*](https://peps.python.org/pep-0654/)
 - [PEP 678 — Enriching Exceptions with Notes (add_note)](https://peps.python.org/pep-0678/)
 - [PEP 765 — Disallow return/break/continue inside finally](https://peps.python.org/pep-0765/)
+- [Real Python — Exception Handling](https://realpython.com/python-exceptions/)
+- [Real Python — Exception Groups](https://realpython.com/python-exception-groups/)

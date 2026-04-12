@@ -17,4 +17,6 @@
 
 - [Python Docs — with statement](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement)
 - [Python Docs — contextlib](https://docs.python.org/3/library/contextlib.html)
+- [Python Docs — Async Context Managers](https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers)
 - [PEP 343 — The with Statement](https://peps.python.org/pep-0343/)
+- [Real Python — Context Managers and the `with` Statement](https://realpython.com/python-with-statement/)
