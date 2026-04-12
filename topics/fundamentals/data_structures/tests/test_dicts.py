@@ -18,6 +18,16 @@ def test_tuple_key_is_valid() -> None:
     assert d[(1, 2, 3)] == [1, 2, 3]
 
 
+def test_tuple_key_accessible_without_parentheses() -> None:
+    # d[1, 2, 3] is syntactic sugar for d[(1, 2, 3)] — the comma constructs the tuple
+    d = {(1, 2, 3): "found"}
+    assert d[1, 2, 3] == "found"
+
+    # also works with variables
+    a, b, c = 1, 2, 3
+    assert d[a, b, c] == "found"
+
+
 def test_int_key_is_valid() -> None:
     d = {1: "one"}
     assert d[1] == "one"
