@@ -31,7 +31,7 @@ class TrackedCM:
 # contextlib.suppress
 # ---------------------------------------------------------------------------
 # Full suppression patterns and __exit__ mechanics:
-#   topics/fundamentals/error_handling/tests/test_suppression.py
+#   topics/error_handling/tests/test_suppression.py
 
 
 def test_suppress_silences_specified_exception() -> None:

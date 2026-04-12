@@ -1,12 +1,12 @@
 # Planned Topics
 
-## Fundamentals
+## Functions
 
-### generators — `fundamentals/generators/`
+### generators — `functions/generators/`
 
 - [generators](tests/test_generators.py) — `yield`, `yield from`, generator expressions, generator protocol, `send()`/`throw()`/`close()`, async generators
 
-### decorators — `fundamentals/decorators/`
+### decorators — `functions/decorators/`
 
 - [decorators](tests/test_decorators.py) — function decorators, stacking, parameterized decorators, `functools.wraps`
 

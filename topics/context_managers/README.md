@@ -10,7 +10,7 @@
 
 ## Related sections
 
-- **Exception suppression patterns** and `__exit__` mechanics in depth: [topics/fundamentals/error_handling/tests/test_suppression.py](../error_handling/tests/test_suppression.py)
+- **Exception suppression patterns** and `__exit__` mechanics in depth: [error handling — suppression](../error_handling/tests/test_suppression.py)
 - **Advanced async CM patterns** (trio, anyio, `TaskGroup`, structured concurrency): `topics/asyncio/` *(upcoming, @TODO)*
 
 ## Resources

@@ -172,5 +172,5 @@ strict = true
 [[tool.mypy.overrides]]
 # Test functions in other topics intentionally omit annotations to stay concise
 # and keep the focus on the concept under test, not on type syntax.
-module = ["topics.*.tests.*"]
+module = ["topics.*.tests.*", "topics.*.*.tests.*"]  # two patterns: one for flat topics, one for nested sub-topics (e.g. collections.builtins.tests.*)
 disallow_untyped_defs = false
