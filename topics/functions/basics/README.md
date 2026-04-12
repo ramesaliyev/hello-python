@@ -11,9 +11,12 @@
 ## Resources
 
 - [Python Docs — Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
+- [Python Docs — More on Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions)
 - [Python Docs — Built-in Functions](https://docs.python.org/3/library/functions.html)
 - [Python Docs — functools](https://docs.python.org/3/library/functools.html)
 - [Python Docs — operator](https://docs.python.org/3/library/operator.html)
 - [Python Docs — inspect](https://docs.python.org/3/library/inspect.html)
 - [Real Python — Python Scope and the LEGB Rule](https://realpython.com/python-scope-legb-rule/)
+- [Real Python — Closures and Inner Functions](https://realpython.com/inner-functions-what-are-they-good-for/)
 - [Real Python — First-Class Functions](https://realpython.com/python-functional-programming/)
+- [Real Python — `functools.singledispatch`](https://realpython.com/singledispatch/)
