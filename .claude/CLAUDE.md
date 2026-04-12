@@ -91,6 +91,51 @@ Tool: **Ruff** (lint + format).
   {[1], 1}  # noqa: B018 — set literal is intentional to trigger TypeError
   ```
 - Never suppress a rule just to make a warning go away; prefer fixing the code instead.
+- **When combining `type: ignore` and `# noqa` on the same line, `type: ignore` must come first.**
+  Placing it after `# noqa` embeds it inside the first comment's text where mypy cannot find it.
+  ```python
+  # Correct:
+  assert 1 != 2  # type: ignore[comparison-overlap]  # noqa: PLR0133 — demonstrating !=
+  # Wrong — mypy will not see the type: ignore:
+  assert 1 != 2  # noqa: PLR0133 — demonstrating !=  # type: ignore[comparison-overlap]
+  ```
+
+---
+
+## Test File Structure
+
+Applies to all test files in the repo.
+
+### Internal layout
+
+```python
+# One-line description of what this file covers.
+
+import pytest  # only if needed
+
+# ---------------------------------------------------------------------------
+# Helpers shared across tests  (omit section if none)
+# ---------------------------------------------------------------------------
+
+class MyHelper: ...
+
+# ---------------------------------------------------------------------------
+# 1. First concept group
+# ---------------------------------------------------------------------------
+
+def test_something() -> None:
+    ...
+
+# ---------------------------------------------------------------------------
+# 2. Second concept group
+# ---------------------------------------------------------------------------
+```
+
+- **Group related tests** under numbered section headers.
+- **Helpers** (dataclasses, enums, small classes) go at the top under their own header — never inline inside a test function unless the helper is specific to that one test.
+- **Variable names**: use descriptive names (`filled_dict`, `our_iterator`) not single letters (`d`, `it`).
+
+For teaching-specific lint suppressions and the lint-fix danger warning, see the `update-topic` skill.
 
 ---
 
