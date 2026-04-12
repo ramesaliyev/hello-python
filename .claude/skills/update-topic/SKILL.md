@@ -18,9 +18,11 @@ Tests **must** cover mechanics thoroughly. They should *also* cover:
 
 Group these naturally within the relevant section, or add a dedicated "Pitfalls" section at the end of the file for mistakes that span multiple mechanics.
 
-## Ordering Examples
+## Ordering
 
-When adding a new test file to a topic's README `## Examples` section, place it in **logical learning order** — not alphabetical, not chronological.
+This rule applies everywhere in the `topics/` README chain — subtopic links in a category README, test-file links inside a topic README, and any other list that represents a sequence of concepts to learn.
+
+Always use **logical learning order** — not alphabetical, not chronological.
 
 **Principle:** simpler and more foundational concepts first; advanced, specialized, or cross-cutting concepts last.
 
