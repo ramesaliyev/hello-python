@@ -86,6 +86,8 @@ List resources in this order:
 
 ## Writing Test Files
 
+> Python 3.14 is the language standard. Reach for modern idioms first — prefer match/case, walrus, ExceptionGroup, etc. Consult the `/python-practices` skill for the full prescriptive list.
+
 ### Teaching tests and lint
 
 **Never run `uv run lint-fix` on test files that intentionally demonstrate language behaviour.** The auto-fixer will corrupt teaching examples silently:
