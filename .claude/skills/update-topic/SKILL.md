@@ -18,6 +18,27 @@ Tests **must** cover mechanics thoroughly. They should *also* cover:
 
 Group these naturally within the relevant section, or add a dedicated "Pitfalls" section at the end of the file for mistakes that span multiple mechanics.
 
+## Ordering Examples
+
+When adding a new test file to a topic's README `## Examples` section, place it in **logical learning order** — not alphabetical, not chronological.
+
+**Principle:** simpler and more foundational concepts first; advanced, specialized, or cross-cutting concepts last.
+
+**General heuristic by concept kind:**
+1. Core mechanics (basic syntax, the fundamental protocol) — goes first
+2. Common patterns built on the core (alternative syntax forms, common idioms)
+3. Delegation / composition (e.g. `yield from`, stacking)
+4. Advanced control (e.g. `send()`, `throw()`, `close()`)
+5. Async variants — always last within a topic
+
+**When unsure:** ask "does a reader need to understand concept A before concept B?" If yes, A comes first.
+
+**Example — functions/generators:**
+generators → generator expressions → yield from → generator methods → async generators
+(not alphabetical, not async first)
+
+---
+
 ## Standard Layout
 
 Every new topic must follow this structure:
