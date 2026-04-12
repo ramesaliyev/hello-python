@@ -2,7 +2,7 @@
 
 ## Examples
 - [lists](tests/test_lists.py)
-- [dicts](tests/test_dicts.py)
+- [dicts](tests/test_dicts.py) — keys, access, mutation, views, merging, defaultdict, Counter
 - [sets](tests/test_sets.py)
 - [tuples](tests/test_tuples.py)
 - [named tuples](tests/test_named_tuples.py)
