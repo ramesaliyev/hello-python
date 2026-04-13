@@ -3,6 +3,7 @@
 ## Examples
 - [types](tests/test_types.py)
 - [operators](tests/test_operators.py)
+- [sequence comparison](tests/test_sequence_comparison.py)
 - [strings](tests/test_strings.py)
 - [builtins](tests/test_builtins.py)
 - [iterables](tests/test_iterables.py)
