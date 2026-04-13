@@ -14,7 +14,7 @@
 - [decorators](tests/test_decorators.py) — `@classmethod`, `@staticmethod`, `@property`/`@x.setter`/`@x.deleter`, `@final`, `@override`
 - [class vs instance variables](tests/test_class_vs_instance_vars.py) — class vs instance variables, the shadowing gotcha, mutation of shared state
 - [slots](tests/test_slots.py) — `__slots__`: memory savings, attribute restriction, inheritance gotchas
-- [descriptors](tests/test_descriptors.py) — descriptor protocol (`__get__`, `__set__`, `__delete__`), data vs non-data descriptors
+- [descriptors](tests/test_descriptors.py) — descriptor protocol (`__get__`, `__set__`, `__delete__`), data vs non-data descriptors, `__set_name__`, functions as non-data descriptors (how method binding works, `types.MethodType`), `property`/`classmethod`/`staticmethod` internals. **Note:** this is the primary home for all descriptor content — do not add descriptor/`__get__` material to `topics/functions/`. The decorator topic (`functions/decorators/tests/test_class_based.py` sections 3–4) already has inline context; reference it here as "you've seen this in action." But still explain the whole thing in detail.
 
 **Resources:**
 - [Python Docs — Data Model](https://docs.python.org/3/reference/datamodel.html)
