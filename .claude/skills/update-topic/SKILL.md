@@ -51,8 +51,17 @@ topics/<category>/<topic>/
 ├── README.md          ← required; link to test files and external resources
 └── tests/
     ├── __init__.py
-    └── test_<topic>.py
+    └── test_<topic>.py   ← or multiple focused files (see below)
 ```
+
+### Multiple test files
+
+Prefer **multiple focused test files** over one large monolithic file. Split by logical concept grouping rather than putting everything in a single `test_<topic>.py`.
+
+- A single file with 70+ tests becomes unwieldy — smaller focused files are easier to navigate and understand.
+- When planning a new topic, propose one file per logical grouping (e.g., `test_basics.py`, `test_expressions.py`, `test_delegation.py`, `test_methods.py`).
+- Mirror the pattern in `topics/functions/basics/` which uses `test_parameters.py`, `test_scope.py`, `test_functional.py`, `test_introspection.py`.
+- Each file must be linked from the topic README in logical learning order.
 
 ## README Chain — Mandatory
 
