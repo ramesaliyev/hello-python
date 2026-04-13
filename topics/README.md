@@ -13,7 +13,7 @@
 ## Functions
 - [basics](functions/basics/README.md) — Parameters, scope, closures, lambdas, higher-order functions
 - [generators](functions/generators/README.md) — yield, send/throw/close, async generators
-- [decorators](functions/decorators/README.md) — function decorators, stacking, functools.wraps *(planned)*
+- [decorators](functions/decorators/README.md) — function decorators, stacking, parameterized decorators, functools
 
 ## OOP
 *(planned — see [PLANNED.md](PLANNED.md))*

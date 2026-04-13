@@ -149,6 +149,32 @@ Enabling strict mode everywhere would make unrelated learning examples unnecessa
 
 Configuration: `[tool.mypy]` in `pyproject.toml` with per-module overrides.
 
+### Strict-mode leakage (important gotcha)
+
+When `strict = true` is set in **any** per-module override, mypy treats the strict flags
+(`disallow_untyped_defs`, `disallow_incomplete_defs`, `disallow_untyped_decorators`,
+`disallow_untyped_calls`, `disallow_any_generics`, `warn_return_any`, …) as new **global
+defaults** for the entire run, not just that module. Other modules inherit them unless a
+second override explicitly resets each flag to `false`.
+
+The test-module override in `pyproject.toml` exists precisely to counter this effect:
+
+```toml
+[[tool.mypy.overrides]]
+module = ["topics.*.tests.*", "topics.*.*.tests.*"]
+disallow_untyped_defs        = false
+disallow_incomplete_defs     = false
+disallow_untyped_decorators  = false
+disallow_untyped_calls       = false
+disallow_any_generics        = false
+warn_return_any              = false
+```
+
+If new `[no-untyped-def]` / `[untyped-decorator]` / `[no-any-return]` errors appear in
+test files that are supposed to be lenient, the likely cause is a new strict flag leaking
+from the `topics.type_hints.*` override. Add the corresponding `= false` reset to the
+test-module override.
+
 ---
 
 ## CI Pipeline

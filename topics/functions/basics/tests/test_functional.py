@@ -215,7 +215,7 @@ def test_next_on_filter_only_computes_until_first_match() -> None:
 
 def test_partial_fixes_keyword_argument() -> None:
     def power(base: int, exp: int) -> int:
-        return base**exp  # type: ignore[no-any-return]
+        return base**exp
 
     square = partial(power, exp=2)
     cube = partial(power, exp=3)
@@ -276,7 +276,7 @@ def test_singledispatch_dispatch_lookup() -> None:
         return "base"
 
     @process.register(list)
-    def _(x: list) -> str:  # type: ignore[type-arg]  # noqa: ARG001
+    def _(x: list) -> str:  # noqa: ARG001
         return "list"
 
     assert process([1, 2]) == "list"

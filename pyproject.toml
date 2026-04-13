@@ -172,5 +172,14 @@ strict = true
 [[tool.mypy.overrides]]
 # Test functions in other topics intentionally omit annotations to stay concise
 # and keep the focus on the concept under test, not on type syntax.
+# The five flags below counter strict-mode settings that leak globally when
+# `strict = true` is set in the topics.type_hints.* override above — mypy
+# applies those flags as new global defaults, so we explicitly reset each
+# one here to keep non-type-hints tests lenient.
 module = ["topics.*.tests.*", "topics.*.*.tests.*"]  # two patterns: one for flat topics, one for nested sub-topics (e.g. collections.builtins.tests.*)
-disallow_untyped_defs = false
+disallow_untyped_defs        = false  # inner helper / decorator functions intentionally lack annotations
+disallow_incomplete_defs     = false  # factory functions (e.g. `def repeat(n: int):`) may omit return type
+disallow_untyped_decorators  = false  # decorators under test are intentionally untyped — that IS the lesson
+disallow_untyped_calls       = false  # calling untyped helpers inside typed tests is intentional
+disallow_any_generics        = false  # bare generics (list, dict) are fine in non-type-hints tests
+warn_return_any              = false  # wrappers that forward `func(*args)` legitimately return Any

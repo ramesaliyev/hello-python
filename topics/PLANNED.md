@@ -1,13 +1,5 @@
 # Planned Topics
 
-## Functions
-
-### decorators — `functions/decorators/`
-
-- [decorators](tests/test_decorators.py) — function decorators, stacking, parameterized decorators, `functools.wraps`
-
----
-
 ## OOP
 
 ### classes — `oop/classes/`
