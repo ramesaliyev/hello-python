@@ -4,10 +4,11 @@
 
 Agreed learning sequence:
 
-1. **itertools** — finishes the functions/iterables chapter before moving on
-2. **OOP** — classes, inheritance, protocols, dataclasses, enums, metaclasses
-3. **Concurrency** — threads, multiprocessing, asyncio
-4. **Type hints (capstone)** — dedicate a topic once everything else is known; then do a retroactive pass to annotate existing code where possible. The `topics/type_hints/` folder runs mypy in strict mode — that's intentional and only applies there.
+* **itertools** — finishes the functions/iterables chapter before moving on
+* **OOP** — classes, inheritance, protocols, dataclasses, enums, metaclasses
+* ?
+* **Concurrency** — threads, multiprocessing, asyncio
+* **Type hints (capstone)** — dedicate a topic once everything else is known; then do a retroactive pass to annotate existing code where possible. The `topics/type_hints/` folder runs mypy in strict mode — that's intentional and only applies there.
 
 ---
 
