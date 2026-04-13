@@ -1,5 +1,32 @@
 # Planned Topics
 
+## Roadmap
+
+Agreed learning sequence:
+
+1. **itertools** — finishes the functions/iterables chapter before moving on
+2. **OOP** — classes, inheritance, protocols, dataclasses, enums, metaclasses
+3. **Concurrency** — threads, multiprocessing, asyncio
+4. **Type hints (capstone)** — dedicate a topic once everything else is known; then do a retroactive pass to annotate existing code where possible. The `topics/type_hints/` folder runs mypy in strict mode — that's intentional and only applies there.
+
+---
+
+## itertools — `functions/itertools/`
+
+Fits under `functions/` alongside `basics/`, `generators/`, `decorators/` — it extends the iterables/generators world already covered there.
+
+- [infinite iterators](tests/test_infinite.py) — `count`, `cycle`, `repeat`: iterators that never stop; pairing with `islice` to cap them
+- [slicing and chaining](tests/test_slicing_chaining.py) — `islice`, `chain`, `chain.from_iterable`, `zip_longest`, `pairwise`: reshaping and combining iterables
+- [filtering and mapping](tests/test_filtering_mapping.py) — `compress`, `dropwhile`, `takewhile`, `filterfalse`, `starmap`, `accumulate`: predicate-based filtering and running aggregations
+- [combinatorics](tests/test_combinatorics.py) — `product`, `permutations`, `combinations`, `combinations_with_replacement`, `groupby`: Cartesian products, ordered/unordered selections, grouping sorted data
+
+**Resources:**
+- [Python Docs — itertools](https://docs.python.org/3/library/itertools.html)
+- [Python Docs — itertools recipes](https://docs.python.org/3/library/itertools.html#itertools-recipes)
+- [Real Python — itertools](https://realpython.com/python-itertools/)
+
+---
+
 ## OOP
 
 ### classes — `oop/classes/`
